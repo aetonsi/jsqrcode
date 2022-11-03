@@ -11,7 +11,7 @@ The web page must contain a `<video>` element. This element will be automaticall
 # Usage
 ### Import script
 ```html
-<script type="text/javascript" src="jsqrcode.js"></script>
+<script type="text/javascript" src="src/jsqrcode.js"></script>
 ```
 ### Create object
 Pass a configuration object to the global `jsqrcode` constructor.
