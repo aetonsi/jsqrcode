@@ -71,7 +71,7 @@ scanner.startScan();
 - `autoStopScan` (boolean, default: false): if true, whenever a `success` callback is called, `stopScan()` (see section below) is also called
   - the use of this property is not recommended. It's better to check the integrity of the decoded text inside of the `success` callback, and if and only if the text is valid, call `stopScan()`. See section below
 - `posterizePlayer` (boolean, default: true): if true, when `stopScan()` is called, the last frame scanned by the camera is saved to the player
-- `debug` (boolean, default: false): if true, the internal canvas used for decoding, will work in blue scale instead of colors. This can help in seeing what the script really does internally
+- `debug` (boolean, default: false): if true, the internal canvas used for decoding, will work in blue scale instead of colors. This can help in seeing what the script really does internally. Also, it will stop execution before each snapshot via a `debugger` statement
 
 
 ### Public methods and properties
@@ -118,3 +118,10 @@ If, after your validation, you found that the text is invalid (hence it's a fals
 
 Here you can see a couple of false positives (highlighted in yellow):
 ![false positive](false-positive.png)
+
+
+# Technical notes
+- LazarSoft's (Lazar Laszlo's) code is identified by `lzl_` prefixes
+- ZXing's code is identified internally by `xyz_` prefixes
+- everything is wrapped in an IIFE to avoid polluting the global namespace. The only global property set by this software is the constructor, `window.jsqrcode`
+- ES6+ has been used in the refactoring

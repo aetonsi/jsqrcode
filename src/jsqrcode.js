@@ -29,7 +29,6 @@
 // this file contains the combination of multiple files from the sotware 'jsqrcode' by LazarSoft @ https://github.com/LazarSoft/jsqrcode ,
 //   plus various sections I personally created. Almost every file from the original library has been edited.
 // jsqrcode's files are virtually separated within this single file by using comments indicating the START and the END of the original file.
-// Every file from the original library has its own License header.
 // ***************************************************************************************************************************************************************
 
 
@@ -389,9 +388,9 @@
             }
             try {
               navigator.mediaDevices.getUserMedia({
-                  audio: (!audioSource ? false : audioSource),
-                  video: (!videoSource ? false : videoSource)
-                })
+                audio: (!audioSource ? false : audioSource),
+                video: (!videoSource ? false : videoSource)
+              })
                 .then(function (stream) {
                   resolve(stream);
                 })
@@ -482,7 +481,7 @@
                         // - check result
 
                         try {
-                          if (xyz_data.debug === 6) {
+                          if (xyz_data.debug) {
                             debugger;
                           }
                           xyz_functions.snapshot2canvas();
@@ -533,13 +532,13 @@
           }
           return new Promise(function (resolve, reject) {
             navigator.mediaDevices.getUserMedia({
-                audio: false,
-                video: {
-                  deviceId: {
-                    exact: deviceId
-                  }
+              audio: false,
+              video: {
+                deviceId: {
+                  exact: deviceId
                 }
-              })
+              }
+            })
               .then(function (stream) {
                 let v = document.createElement('video');
                 v.onloadedmetadata = function () {
@@ -647,8 +646,8 @@
 
       // GETTING CAMERA PERMISSION
       navigator.mediaDevices.getUserMedia({
-          video: true
-        })
+        video: true
+      })
         .then(function (stream) {
           // stop video stream
           if (!xyz_functions.stopStreamFromMediaDevice(stream)) {
@@ -1340,7 +1339,7 @@
           case 0:
             dimension++;
             break;
-            // 1? do nothing
+          // 1? do nothing
 
           case 2:
             dimension--;
